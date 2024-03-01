@@ -43,10 +43,10 @@ module systemizer
   output wire done,
   input  wire rd_en,
   input  wire [`CLOG2(L*K/N) - 1 : 0] rd_addr,
-  output wire [(N*M)-1 : 0] data_out,
+  output wire [N*(`CLOG2(M)) - 1: 0] data_out,
   input  wire wr_en,
   input  wire [`CLOG2(L*K/N) - 1 : 0] wr_addr,
-  input  wire [(N*M)-1 : 0] data_in
+  input  wire [(N*`CLOG2(M))-1 : 0] data_in
 );
 
 // This implementation does not have a second pass in the right side.

@@ -43,10 +43,10 @@ module step
   output wire fail,
   input  wire rd_en,
   input  wire [`CLOG2(L*K/N) - 1 : 0] rd_addr,
-  output wire [(N*M)-1 : 0] data_out,
+  output wire [(N*`CLOG2(M))-1 : 0] data_out,
   input  wire wr_en,
   input  wire [`CLOG2(L*K/N) - 1 : 0] wr_addr,
-  input  wire [(N*M)-1 : 0] data_in
+  input  wire [(N*`CLOG2(M))-1 : 0] data_in
 );
 
 //localparam DELAY = $floor((N-1)/BLOCK);
@@ -68,8 +68,8 @@ reg [N-1:0] pass = {N {1'b0}};
 
 
 // M20k interface
-reg  [(N*M) - 1 : 0] din_data = 0;
-wire [(N*M) - 1 : 0] dout_data;
+reg  [(N*`CLOG2(M)) - 1 : 0] din_data = 0;
+wire [(N*`CLOG2(M)) - 1 : 0] dout_data;
 
 reg [`CLOG2(L*K/N + 1) - 1 : 0] rd_addr_data;
 reg [`CLOG2(L*K/N + 1) - 1 : 0] wr_addr_data;
@@ -78,8 +78,8 @@ reg wr_en_data = 1'b0;
 
 ///////////////////////////////////////
 
-reg  [(2+M)*N - 1 : 0] din_op = 0;
-wire [(2+M)*N - 1 : 0] dout_op;
+reg  [(2+`CLOG2(M))*N - 1 : 0] din_op = 0;
+wire [(2+`CLOG2(M))*N - 1 : 0] dout_op;
 
 reg [`CLOG2(L+2*N + 1) - 1 : 0] rd_addr_op = 0;
 reg [`CLOG2(L+2*N + 1) - 1 : 0] wr_addr_op = 0;
@@ -91,9 +91,9 @@ reg wr_en_op = 1'b0;
 reg SA_start  = 1'b0;
 reg SA_finish = 1'b0;
 
-wire [(N*M)-1 : 0] SA_dout;
-reg  [(2+M)*N-1 : 0] SA_op_in = 0;
-wire [(2+M)*N-1 : 0] SA_op_out;
+wire [(N*`CLOG2(M))-1 : 0] SA_dout;
+reg  [(2+`CLOG2(M))*N-1 : 0] SA_op_in = 0;
+wire [(2+`CLOG2(M)*N)-1 : 0] SA_op_out;
 wire SA_r_A_and;
 
 reg  [(N*M)-1 : 0] SA_din = 0;
@@ -137,7 +137,7 @@ always @(posedge clk) begin
 end
 
 // M20k for storing dout
-  mem #(.WIDTH(N*M), .DEPTH(L*K/N), .FILE(DATA)) mem_data (
+  mem #(.WIDTH(N*`CLOG2(M)), .DEPTH(L*K/N), .FILE(DATA)) mem_data (
   .clock (clk),
   .data (wr_en ? data_in : din_data),
   .rdaddress (rd_en ? rd_addr : rd_addr_data[`CLOG2(L*K/N) - 1 : 0]),
@@ -148,7 +148,7 @@ end
 );
 
 // M20k for storing op_outs
-mem #(.WIDTH((2+M)*N), .DEPTH(L+2*N + 1)) mem_op (
+mem #(.WIDTH((2+`CLOG2(M))*N), .DEPTH(L+2*N + 1)) mem_op (
   .clock (clk),
   .data (din_op),
   .rdaddress (rd_addr_op),

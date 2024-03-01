@@ -32,11 +32,11 @@ module systemize_tb;
 
   reg rd_en = 1'b0;
   reg [`CLOG2(`L*`K/`N) - 1 : 0] rd_addr = 0;
-  wire [(`N*`M)-1 : 0] data_out;
+  wire [(`N*`CLOG2(`M))-1 : 0] data_out;
 
   reg wr_en = 1'b0;
   reg [`CLOG2(`L*`K/`N) - 1 : 0] wr_addr = 0;
-  reg [(`N*`M)-1 : 0] data_in;
+  reg [(`N*`CLOG2(`M))-1 : 0] data_in;
 
   //outputs
   wire done;

@@ -86,5 +86,5 @@ run: data.out
 
 
 clean:
-	rm -rf gen/* systemize_tb data.in data.out gen_test.sage.py systemize_tb.vcd verify_test.sage.py 
+	rm -rf gen/* systemize_tb data.in data.out gen_test.sage.py systemize_tb.vcd verify_test.sage.py *.vcd
 
