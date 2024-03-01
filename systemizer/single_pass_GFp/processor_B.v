@@ -52,7 +52,7 @@ module processor_B
     end
   end
 
-  wire [WIDTH-1:0]  mad_out;
+  wire [(WIDTH-1)*2:0]  mad_out;
   wire [WIDTH-1:0]  mad_out_reduced;
 
   GFE_mad gfe_mad_inst (

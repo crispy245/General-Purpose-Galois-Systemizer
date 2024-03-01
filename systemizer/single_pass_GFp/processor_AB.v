@@ -59,7 +59,7 @@ module processor_AB
     end
   end
 
-  wire [WIDTH*2-1:0] mad_out;
+  wire [(WIDTH-1)*2:0] mad_out;
   wire [WIDTH-1:0]  mad_out_reduced;
   wire [WIDTH-1:0] inv_out;
 //  wire inv_en;

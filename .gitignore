@@ -1,0 +1,4 @@
+systemizer/systemizer_tb/gen/*.v
+systemizer/systemizer_tb/data.out
+systemizer/systemizer_tb/data.in
+systemizer/systemizer_tb/*.vcd

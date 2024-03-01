@@ -47,6 +47,6 @@ module GFE_barret(
       
     assign dout_r = result >= {4} ? result - {4} : result;
 
-endmodule; 
+endmodule
 """.format((log2_field-1)*2,log2_field-1, mu_constant,k,mod))
 

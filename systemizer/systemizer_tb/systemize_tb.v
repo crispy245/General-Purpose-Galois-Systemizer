@@ -65,11 +65,11 @@ module systemize_tb;
     .data_in(data_in)
   );
 
-  //initial
-  //  begin
-  //     $dumpfile("systemize_tb.vcd");
-  //     $dumpvars(0, systemize_tb);
-  //  end
+  initial
+   begin
+      $dumpfile("systemize_tb.vcd");
+      $dumpvars(0, systemize_tb);
+   end
  
   integer i;
 

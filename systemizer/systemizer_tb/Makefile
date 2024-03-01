@@ -28,7 +28,7 @@ N = 4
 L = 16
 K = 24
 
-M ?= 3
+M ?= 2
 
 BLOCK = $N
 
@@ -62,6 +62,13 @@ include ../$(SYSTEMIZER)/gen.mk
 include ../$(SYSTEMIZER)/sources.mk
 
 #SOURCES += systemize_tb.v
+
+.PHONY: only_tb
+only_tb:
+	iverilog -Wall -Wno-timescale -DN=$N -DL=$L -DK=$K -DM=$M -DBLOCK=$(BLOCK) $(SOURCES) systemize_tb.v -o systemize_tb
+
+systemize_tb: $(SOURCES) systemize_tb.v
+	iverilog -Wall -Wno-timescale -DN=$N -DL=$L -DK=$K -DM=$M -DBLOCK=$(BLOCK) $(SOURCES) systemize_tb.v -o systemize_tb
 
 
 systemize_tb: $(SOURCES) systemize_tb.v
