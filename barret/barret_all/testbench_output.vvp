@@ -1,0 +1,116 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x557307719350 .scope module, "barret_for_4093_tb" "barret_for_4093_tb" 2 4;
+ .timescale -9 -12;
+v0x5573077340d0_0 .var "clk", 0 0;
+v0x557307734190_0 .var "data_in", 22 0;
+v0x557307734250_0 .net "data_out", 11 0, L_0x557307745220;  1 drivers
+v0x5573077342f0_0 .var/i "fd", 31 0;
+v0x557307734390_0 .var/i "i", 31 0;
+E_0x557307718b40 .event negedge, v0x5573077340d0_0;
+S_0x5573077194e0 .scope module, "barret_inst" "barret_for_4093" 2 10, 3 2 0, S_0x557307719350;
+ .timescale 0 0;
+    .port_info 0 /INPUT 23 "din_a";
+    .port_info 1 /OUTPUT 12 "dout_r";
+v0x5573077196c0_0 .net *"_ivl_12", 10 0, L_0x557307744810;  1 drivers
+L_0x7f920e1860a8 .functor BUFT 1, C4<000000000000>, C4<0>, C4<0>, C4<0>;
+v0x557307732fc0_0 .net *"_ivl_14", 11 0, L_0x7f920e1860a8;  1 drivers
+L_0x7f920e1860f0 .functor BUFT 1, C4<00000000000111111111101>, C4<0>, C4<0>, C4<0>;
+v0x5573077330a0_0 .net/2u *"_ivl_16", 22 0, L_0x7f920e1860f0;  1 drivers
+v0x557307733160_0 .net *"_ivl_22", 31 0, L_0x557307744ce0;  1 drivers
+L_0x7f920e186138 .functor BUFT 1, C4<000000000>, C4<0>, C4<0>, C4<0>;
+v0x557307733240_0 .net *"_ivl_25", 8 0, L_0x7f920e186138;  1 drivers
+L_0x7f920e186180 .functor BUFT 1, C4<00000000000000000000111111111101>, C4<0>, C4<0>, C4<0>;
+v0x557307733370_0 .net/2u *"_ivl_26", 31 0, L_0x7f920e186180;  1 drivers
+v0x557307733450_0 .net *"_ivl_28", 0 0, L_0x557307744ef0;  1 drivers
+L_0x7f920e1861c8 .functor BUFT 1, C4<00000000000111111111101>, C4<0>, C4<0>, C4<0>;
+v0x557307733510_0 .net/2u *"_ivl_30", 22 0, L_0x7f920e1861c8;  1 drivers
+v0x5573077335f0_0 .net *"_ivl_32", 22 0, L_0x557307745030;  1 drivers
+v0x5573077336d0_0 .net *"_ivl_34", 22 0, L_0x557307745180;  1 drivers
+v0x5573077337b0_0 .net *"_ivl_4", 10 0, L_0x5573077444a0;  1 drivers
+L_0x7f920e186060 .functor BUFT 1, C4<000000000000>, C4<0>, C4<0>, C4<0>;
+v0x557307733890_0 .net *"_ivl_6", 11 0, L_0x7f920e186060;  1 drivers
+v0x557307733970_0 .net "din_a", 22 0, v0x557307734190_0;  1 drivers
+v0x557307733a50_0 .net "dout_r", 11 0, L_0x557307745220;  alias, 1 drivers
+L_0x7f920e186018 .functor BUFT 1, C4<00000000001000000000011>, C4<0>, C4<0>, C4<0>;
+v0x557307733b30_0 .net "mu_constant", 22 0, L_0x7f920e186018;  1 drivers
+v0x557307733c10_0 .net "mult", 22 0, L_0x557307744a70;  1 drivers
+v0x557307733cf0_0 .net "q_hat", 22 0, L_0x5573077446d0;  1 drivers
+v0x557307733dd0_0 .net "q_val", 22 0, L_0x557307744590;  1 drivers
+v0x557307733eb0_0 .net "result", 22 0, L_0x557307744bf0;  1 drivers
+v0x557307733f90_0 .net "t_val", 22 0, L_0x557307744930;  1 drivers
+L_0x5573077444a0 .part v0x557307734190_0, 12, 11;
+L_0x557307744590 .concat [ 11 12 0 0], L_0x5573077444a0, L_0x7f920e186060;
+L_0x5573077446d0 .arith/mult 23, L_0x557307744590, L_0x7f920e186018;
+L_0x557307744810 .part L_0x5573077446d0, 12, 11;
+L_0x557307744930 .concat [ 11 12 0 0], L_0x557307744810, L_0x7f920e1860a8;
+L_0x557307744a70 .arith/mult 23, L_0x557307744930, L_0x7f920e1860f0;
+L_0x557307744bf0 .arith/sub 23, v0x557307734190_0, L_0x557307744a70;
+L_0x557307744ce0 .concat [ 23 9 0 0], L_0x557307744bf0, L_0x7f920e186138;
+L_0x557307744ef0 .cmp/ge 32, L_0x557307744ce0, L_0x7f920e186180;
+L_0x557307745030 .arith/sub 23, L_0x557307744bf0, L_0x7f920e1861c8;
+L_0x557307745180 .functor MUXZ 23, L_0x557307744bf0, L_0x557307745030, L_0x557307744ef0, C4<>;
+L_0x557307745220 .part L_0x557307745180, 0, 12;
+    .scope S_0x557307719350;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5573077340d0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x557307719350;
+T_1 ;
+    %vpi_func 2 20 "$fopen" 32, "result_prime_4093.out", "w" {0 0 0};
+    %store/vec4 v0x5573077342f0_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x557307734390_0, 0, 32;
+T_1.0 ;
+    %load/vec4 v0x557307734390_0;
+    %cmpi/s 4093, 0, 32;
+    %jmp/0xz T_1.1, 5;
+    %wait E_0x557307718b40;
+    %load/vec4 v0x557307734390_0;
+    %pad/s 23;
+    %store/vec4 v0x557307734190_0, 0, 23;
+    %delay 10000, 0;
+    %load/vec4 v0x557307734250_0;
+    %pad/u 32;
+    %load/vec4 v0x557307734390_0;
+    %pushi/vec4 4093, 0, 32;
+    %mod;
+    %cmp/e;
+    %jmp/0xz  T_1.2, 4;
+    %vpi_call 2 29 "$fwrite", v0x5573077342f0_0, "EQUAL FOR %d mod 4093\012", v0x557307734190_0 {0 0 0};
+    %jmp T_1.3;
+T_1.2 ;
+    %vpi_call 2 33 "$fwrite", v0x5573077342f0_0, "ERROR FOR %d mod 4093\012", v0x557307734190_0 {0 0 0};
+T_1.3 ;
+    %load/vec4 v0x557307734390_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x557307734390_0, 0, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %vpi_call 2 37 "$fclose", v0x5573077342f0_0 {0 0 0};
+    %vpi_call 2 38 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x557307719350;
+T_2 ;
+    %delay 5000, 0;
+    %load/vec4 v0x5573077340d0_0;
+    %nor/r;
+    %store/vec4 v0x5573077340d0_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "barret_for_4093_tb.v";
+    "barret_for_4093.v";

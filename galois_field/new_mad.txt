@@ -1,0 +1,13 @@
+module GFE_mad (
+  input            clk,
+  input  [1 : 0] dinA,
+  input  [1 : 0] dinB,
+  input  [1 : 0] dinC,
+  output [1 : 0] dout
+);
+
+  assign dout[0] = dinC[0] ^ dinA[0]&dinB[0];
+  assign dout[1] = dinC[1] ^ ;
+
+endmodule
+

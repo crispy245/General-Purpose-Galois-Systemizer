@@ -1,0 +1,6 @@
+mem_tb: mem_tb.v mem.v
+	iverilog mem_tb.v mem.v -o mem_tb
+
+clean:
+	rm -rf mem_tb mem_tb.vcd
+

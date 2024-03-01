@@ -1,0 +1,47 @@
+module GFE_inv (
+  input wire        clk,
+  input wire [0:0] din_A,
+  output wire [0:0] dout_A,
+  output wire dout_en_A,
+  input wire [0:0] din_B,
+  output wire [0:0] dout_B,
+  output wire dout_en_B
+);
+
+parameter DELAY = -1;
+
+generate
+if (DELAY != 1) begin
+    ERROR_module_parameter_DELAY_not_set_correctly_in_GF_INV ASSERT_ERROR();
+end
+endgenerate
+
+reg [1:0] mem [0:1];
+
+initial begin
+  mem[0] = 2'b00;
+  mem[1] = 2'b11;
+end
+
+reg [1:0] dout_A_tmp;
+
+always @(posedge clk) 
+begin
+  dout_A_tmp <= mem[din_A];
+end
+
+assign dout_A = dout_A_tmp[0:0];
+assign dout_en_A = dout_A_tmp[1];
+
+reg [1:0] dout_B_tmp;
+
+always @(posedge clk) 
+begin
+  dout_B_tmp <= mem[din_B];
+end
+
+assign dout_B = dout_B_tmp[0:0];
+assign dout_en_B = dout_B_tmp[1];
+
+endmodule
+
